@@ -22,6 +22,7 @@ while vez <= repet:
     vezstr = str (vez) + 'a vez'
     legenda.append (vezstr)
     vez += 1
+    
 
 plt.xticks (vezes, legenda)
 plt.plot (vezes, tempos)
