@@ -4,9 +4,14 @@ import json
 from datetime import date
 import urllib.parse
 import pprint
+import os
+import sys
 
-accuweatherAPIKey = '2lGF5Cp41HqmaZXx1aGxn3VzzreKeBaE'
-mapboxToken =  'pk.eyJ1IjoiamFtZXJzb25tc3MiLCJhIjoiY2xoZ2I4cWc5MGQ0NzNmbm1oZDZ1OG10ZyJ9.4Ejicg3GDNaHH8pSWTlX5g'
+accuweatherAPIKey = os.environ.get('ACCUWEATHER_API_KEY')
+mapboxToken = os.environ.get('MAPBOX_TOKEN')
+
+if not accuweatherAPIKey or not mapboxToken:
+    sys.exit('Defina as variáveis de ambiente ACCUWEATHER_API_KEY e MAPBOX_TOKEN antes de executar.')
 dias_semana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado']
 
 def pegarCoordenadas(): 
@@ -104,7 +109,7 @@ def mostrarPrevisao(lat, long):
          print(climaAtual['textoClima'])
          print('Temperatura: ' + str(climaAtual['temperatura']) + "\xb0" + "C")         
     except:
-         print('\Erro ao obter o clima atual. ')
+         print('\nErro ao obter o clima atual. ')
 
     opcao = input('\nDeseja ver a previsão para os próximos dias? (s ou n): ').lower()
 
@@ -120,7 +125,7 @@ def mostrarPrevisao(lat, long):
                     print('Clima: ' + dia['clima'])
                     print('---------------------------')
          except:
-                    print('\Erro ao obter a previsão para os próximos dias. ')
+                    print('\nErro ao obter a previsão para os próximos dias. ')
 
 def pesquisarLocal(local):
     _local = urllib.parse.quote(local)   
