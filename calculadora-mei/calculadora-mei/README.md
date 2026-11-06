@@ -59,7 +59,7 @@ Alguns exemplos:
 1500,00
 1.500,00
 1500.00
-
+```
 
 ## 🛠️ Tecnologias utilizadas
 
